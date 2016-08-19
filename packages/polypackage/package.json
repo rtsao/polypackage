@@ -1,0 +1,16 @@
+{
+  "name": "polypackage",
+  "version": "1.0.0-beta.0",
+  "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "babel-core": "^6.13.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.11.5",
+    "babylon": "^6.9.0"
+  },
+  "license": "MIT"
+}

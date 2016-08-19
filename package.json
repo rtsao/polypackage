@@ -1,0 +1,16 @@
+{
+  "name": "polypackage-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean"
+  },
+  "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
+  "devDependencies": {
+    "lerna": "2.0.0-beta.26"
+  },
+  "license": "MIT"
+}
