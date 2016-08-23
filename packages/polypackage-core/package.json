@@ -1,0 +1,21 @@
+{
+  "name": "polypackage-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "transpile": "babel src -d dist",
+    "prepublish": "npm run transpile"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.13.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.11.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.11.4"
+  }
+}

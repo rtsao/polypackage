@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "minimist": "^1.2.0",
-    "polypackage": "^1.0.0"
+    "polypackage": "^1.0.0-beta.1"
   },
   "license": "MIT"
 }

@@ -4,18 +4,20 @@
   "module": "src/module.js",
   "scripts": {
     "transpile": "babel src -d dist/lib",
-    "prepublish-pkg": "npm run transpile && polypackage src --root=dist --out-dir=lib && npm run rollup",
-    "rollup": "npm run rollup-es5 && npm run rollup-es2015",
-    "rollup-es5": "rollup -c",
-    "rollup-es2015": "rollup -c rollup.config-es2015.js",
+    "rollup": "rollup -c",
+    "polypackage": "polypackage src --root=dist --out-dir=lib",
+    "prepublish-pkg": "npm run transpile && npm run rollup && npm run polypackage",
     "publish-pkg": "npm publish dist"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
+    "babel-plugin-external-helpers": "^6.8.0",
+    "babel-plugin-polypackage": "^1.0.0-beta.1",
     "babel-preset-es2015": "^6.13.2",
-    "polypackage-cli": "*",
+    "babel-preset-es2015-rollup": "^1.2.0",
     "rollup": "^0.34.10",
-    "rollup-plugin-babel": "^2.6.1"
+    "rollup-plugin-babel": "^2.6.1",
+    "polypackage-cli": "^1.0.0-beta.1"
   },
   "private": true
 }
