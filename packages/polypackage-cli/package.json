@@ -1,6 +1,6 @@
 {
   "name": "polypackage-cli",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Polypackage CLI",
   "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
   "bin": {
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "minimist": "^1.2.0",
-    "polypackage": "^1.0.0-beta.1"
+    "polypackage": "^1.0.0-beta.2"
   },
   "license": "MIT"
 }
