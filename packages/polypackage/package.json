@@ -1,6 +1,6 @@
 {
   "name": "polypackage",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
   "main": "dist/index.js",
   "scripts": {
