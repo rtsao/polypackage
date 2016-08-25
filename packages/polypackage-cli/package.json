@@ -4,14 +4,18 @@
   "description": "Polypackage CLI",
   "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
   "bin": {
-    "polypackage": "cli.js"
+    "polypackage": "dist/cli.js"
   },
   "scripts": {
+    "transpile": "babel src -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "minimist": "^1.2.0",
     "polypackage": "^1.0.0-beta.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.14.0"
+  }
 }

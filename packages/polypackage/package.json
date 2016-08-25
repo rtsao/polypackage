@@ -2,12 +2,16 @@
   "name": "polypackage",
   "version": "1.0.0-beta.2",
   "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "transpile": "babel src -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "derive-pkg-core": "^1.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.14.0"
+  }
 }
