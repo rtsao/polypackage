@@ -1,7 +1,7 @@
 {
   "name": "demo-package",
   "version": "1.0.0-beta.6",
-  "module": "src/module.js",
+  "module": "src/index.js",
   "scripts": {
     "transpile": "babel src -d dist/lib",
     "rollup": "rollup -c",
