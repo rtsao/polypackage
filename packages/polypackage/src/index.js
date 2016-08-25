@@ -7,8 +7,8 @@ function polyPackage({basedir, srcDirname, outputDirname, transpileDirname}) {
     destDir: path.join(basedir, outputDirname),
     transformFn: (pkg) => {
       return Object.assign({}, pkg, {
-        main: path.join(transpileDirname, 'module.js'),
-        module: 'es/module.js'
+        main: path.join(transpileDirname, 'index.js'),
+        module: 'es/index.js'
       });
     }
   }, (err) => {

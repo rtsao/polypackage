@@ -6,7 +6,7 @@ module.exports = function() {
   return {
     visitor: {
       Program: function({node}, state) {
-        const rootModule = state.opts.rootModule || 'src/module.js';
+        const rootModule = state.opts.rootModule || 'src/index.js';
         const destDir = state.opts.dest;
 
         if (state.file.opts.filename !== rootModule) {
