@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const polypackage = require('polypackage-core');
+const mkdirp = require('mkdirp');
 
 module.exports = function() {
   return {
@@ -16,6 +17,7 @@ module.exports = function() {
         const modules = polypackage(node.body, {
           dirname: 'lib'
         });
+        mkdirp.sync(destDir);
         modules.forEach(file => {
           fs.writeFileSync(path.join(destDir, file.filename), file.code, 'utf8');
         });
