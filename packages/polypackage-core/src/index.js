@@ -2,13 +2,16 @@ const path = require('path');
 const isValidExport = require('./is-valid-export');
 const constructIndividualExports = require('./construct-individual-exports');
 const compileToCommonJSEntry = require('./compile-to-commonjs-entry');
+const kebab = require('param-case');
 
 module.exports = moduleAstToCommonJs;
 
 function moduleAstToCommonJs(body, opts) {
   inspect(body);
   const transFn = sourcePath => getTranspiledPath(sourcePath, opts.dirname);
-  const identifierToFilename = identifier => `${identifier}.js`;
+  const identifierToFilename = identifier =>
+    `${opts.preserveCase ? identifier : kebab(identifier)}.js`;
+
   let output = [];
   body.forEach(decl => {
     const asts = constructIndividualExports(decl, transFn);

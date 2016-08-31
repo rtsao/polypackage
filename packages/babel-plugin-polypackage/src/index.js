@@ -15,10 +15,12 @@ module.exports = function() {
           return false;
         }
         const modules = polypackage(node.body, {
-          dirname: 'lib'
+          dirname: 'lib',
+          preserveCase: state.opts.preserveCase
         });
         mkdirp.sync(destDir);
         modules.forEach(file => {
+          console.log(destDir);
           fs.writeFileSync(path.join(destDir, file.filename), file.code, 'utf8');
         });
       }
