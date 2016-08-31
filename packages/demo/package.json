@@ -1,6 +1,6 @@
 {
   "name": "demo-package",
-  "version": "1.0.0-beta.7",
+  "version": "1.0.0-beta.8",
   "module": "src/index.js",
   "scripts": {
     "transpile": "babel src -d dist/lib",
@@ -12,7 +12,7 @@
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babel-plugin-external-helpers": "^6.8.0",
-    "babel-plugin-polypackage": "^1.0.0-beta.7",
+    "babel-plugin-polypackage": "^1.0.0-beta.8",
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-es2015-rollup": "^1.2.0",
     "rollup": "^0.34.10",
