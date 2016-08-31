@@ -20,8 +20,11 @@ module.exports = function() {
         });
         mkdirp.sync(destDir);
         modules.forEach(file => {
-          console.log(destDir);
-          fs.writeFileSync(path.join(destDir, file.filename), file.code, 'utf8');
+          const filepath = path.join(destDir, file.filename);
+          if (!state.opts.silent) {
+            console.log('polypackage:', filepath);
+          }
+          fs.writeFileSync(filepath, file.code, 'utf8');
         });
       }
     }
