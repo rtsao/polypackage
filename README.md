@@ -18,6 +18,8 @@ With the exception of these restrictions on the contents of `src/index.js`, ther
 
 https://github.com/rtsao/polypackage/tree/master/packages/demo
 
+**[Source](https://github.com/rtsao/polypackage/tree/master/packages/demo/src)**
+
 **Output:**
 - dist/
   - package.json - *(`main` points to `lib/index.js` and `module` points to `es/index.js`)*
