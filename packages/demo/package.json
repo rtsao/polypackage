@@ -1,6 +1,6 @@
 {
   "name": "demo-package",
-  "version": "1.0.0-beta.10",
+  "version": "1.0.0-beta.11",
   "module": "src/index.js",
   "scripts": {
     "transpile": "babel src -d dist/lib",
@@ -17,7 +17,7 @@
     "babel-preset-es2015-rollup": "^1.2.0",
     "rollup": "^0.34.10",
     "rollup-plugin-babel": "^2.6.1",
-    "polypackage-cli": "^1.0.0-beta.9"
+    "polypackage-cli": "^1.0.0-beta.11"
   },
   "private": true
 }
