@@ -5,6 +5,7 @@
   "description": "Polypackage monorepo",
   "main": "index.js",
   "scripts": {
+    "pretest": "lerna run transpile",
     "test": "lerna run test",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean"
