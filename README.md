@@ -2,7 +2,7 @@
 [![build status][build-badge]][build-href]
 [![npm version][npm-badge]][npm-href]
 
-**npm packages done right.** Use ES2015+ in your package source and get single npm package optimized for both ES Module and CommonJS consumers, including Weback, Browserify, Rollup, and Node.js. Includes progressive enhancements for tree-shaking bundlers (e.g. Webpack 2 and Rollup).
+**npm packages done right.** Use ES2015+ in your package source and get single npm package optimized for both ES Module and CommonJS consumers, including Weback, Browserify, Rollup, and Node.js. Includes progressive enhancements for tree-shaking bundlers (e.g. Webpack 2 and Rollup) to [https://nolanlawson.com/2016/08/15/the-cost-of-small-modules/](reduce module overhead).
 
 ### Features
 * Universal granular imports for consumers lacking a tree-shaking bundler
