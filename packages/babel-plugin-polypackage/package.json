@@ -10,7 +10,7 @@
   "dependencies": {
     "polypackage-core": "^2.0.0-beta.1"
   },
-  "author": "",
+  "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.14.0"

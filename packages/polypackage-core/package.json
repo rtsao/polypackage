@@ -9,10 +9,9 @@
     "transpile": "babel src -d dist",
     "prepublish": "npm run transpile"
   },
-  "author": "",
+  "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "babel-code-frame": "^6.16.0",
     "babel-core": "^6.13.2",
     "param-case": "^2.1.0"
   },
