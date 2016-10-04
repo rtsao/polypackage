@@ -31,6 +31,7 @@ Now consumers of your package can do any of the following:
 #### CommonJS (idiomatic submodules)
 ```js
 // No `.default` is needed!
+// No `lib/` or `dist`!
 const foo = require('my-package/foo');
 const bar = require('my-package/bar');
 ```
@@ -38,17 +39,17 @@ const bar = require('my-package/bar');
 #### CommonJS (entire module)
 ```js
 // No `.default` is needed!
-const {foo, bar, baz} = require('my-package/foo');
+const {foo, bar, baz} = require('my-package');
 ```
 
-#### ES Modules (idiomatic destructuring)
+#### ES Modules (idiomatic destructuring imports)
 ```js
 // With a tree-shaking bundler, you can do this without a potential bundle size penalty
 // Additionally, because the bundler will resolve a Rolled-up ES module, there's even less module overhead!
 import {foo, bar} from 'my-package';
 ```
 
-#### ES Modules (submodule import)
+#### ES Modules (CommonJS-style submodule imports)
 ```js
 // without a tree-shaking bundler, this might be preferred
 import foo from 'my-package/foo';
