@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-polypackage",
-  "version": "1.0.0-beta.12",
+  "version": "2.0.0-beta.1",
   "description": "Babel plugin for polypackage",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "prepublish": "npm run transpile"
   },
   "dependencies": {
-    "polypackage-core": "^1.0.0-beta.12"
+    "polypackage-core": "^2.0.0-beta.1"
   },
   "author": "",
   "license": "MIT",
