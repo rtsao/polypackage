@@ -1,9 +1,10 @@
 # polypackage
-
 [![build status][build-badge]][build-href]
 [![npm version][npm-badge]][npm-href]
 
-Use ES2015+ import/export syntax to publish a single npm package with:
+**npm packages done right.** Use ES2015+ in your package source and get single npm package optimized for both ES Module and CommonJS consumers, including Weback, Browserify, Rollup, and Node.js. Includes progressive enhancements for tree-shaking bundlers (e.g. Webpack 2 and Rollup).
+
+### Features
 * Universal granular imports for consumers lacking a tree-shaking bundler
  * **Idiomatic CommonJS consumption**
     * No `require('my-package').default`
