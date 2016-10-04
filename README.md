@@ -29,29 +29,27 @@ export {bar, baz} from './other/submodule';
 Now consumers of your package can do any of the following:
 
 #### CommonJS (idiomatic submodules)
+No referencing `lib/` or `dist/`! No `.default` is needed!
 ```js
-// No `.default` is needed!
-// No `lib/` or `dist`!
 const foo = require('my-package/foo');
 const bar = require('my-package/bar');
 ```
 
 #### CommonJS (entire module)
+No `.default` is needed!
 ```js
-// No `.default` is needed!
 const {foo, bar, baz} = require('my-package');
 ```
 
 #### ES Modules (idiomatic destructuring imports)
+With a tree-shaking bundler, you can do this without a potential bundle size penalty. Additionally, because the bundler will resolve a Rolled-up ES module, there's even [less module overhead](https://nolanlawson.com/2016/08/15/the-cost-of-small-modules/)!
 ```js
-// With a tree-shaking bundler, you can do this without a potential bundle size penalty
-// Additionally, because the bundler will resolve a Rolled-up ES module, there's even less module overhead!
 import {foo, bar} from 'my-package';
 ```
 
 #### ES Modules (CommonJS-style submodule imports)
+Without a tree-shaking bundler, this might be preferred
 ```js
-// without a tree-shaking bundler, this might be preferred
 import foo from 'my-package/foo';
 import bar from 'my-package/bar';
 ```
