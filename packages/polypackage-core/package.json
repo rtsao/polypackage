@@ -4,19 +4,20 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretest": "npm run transpile",
+    "test": "node dist/test/index.js",
     "transpile": "babel src -d dist",
     "prepublish": "npm run transpile"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
+    "babel-code-frame": "^6.16.0",
     "babel-core": "^6.13.2",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.11.5",
     "param-case": "^2.1.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.11.4"
+    "babel-cli": "^6.11.4",
+    "babylon": "^6.11.4"
   }
 }

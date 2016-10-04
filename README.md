@@ -1,47 +1,70 @@
 # polypackage
 
-Generate a CommonJS package from an ES Module package.
+Use ES2015+ import/export syntax to publish a single npm package with:
+* Universal granular imports for consumers lacking a tree-shaking bundler
+ * **Idiomatic CommonJS consumption**
+    * No `require('my-package').default`
+    * Consumption of individual submodules **without exposing transpilation paths**
+      * `require('my-package/submodule')` rather than `require('my-package/lib/submodule)`
+ * Granular ES2015+ consumption of submodules akin to CommonJS when not using a tree-shaking bundler
+      * `import submodule from 'my-package/submodule'` without tree shaking
+ * Future-proof idiomatic ES2015+ consumption via destructured imports, i.e. `import {submodule} from 'my-package'`
+* **Progressive enhacement for consumers using a tree-shaking bundler** via a 
+ * Rolled-up "module" entry file enables use of idiomatic ES2015+ consumption via destructured imports with less module overhead
+* **Support for `npm link` and Lerna**
 
-An implementation of this idea: https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md#poly-packages
+Polypackage is loosely based on the "poly-packages" idea proposed in https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md#poly-packages
 
-## Differences from the proposal
-This utility is designed for packages with some build step where `src/` is transpiled into `dist/`.
+## How it works
 
-This utility enforces some restictions on your main `index.js` module so that there's a bijective mapping of named exports to CommonJS submodule files at the root. NOTE: These restrictions apply **only** to the main `index.js`.
-- It must only contain named export declarations (no other kinds of statements or declarations)
-- Default exports are not allowed (you must give them a name)
-- No `export *`
+1. Create a polypackage "index" entry with ES2015 export syntax.
+ - This file must conform to the following format:
+    - Must only contain named export declarations (no other kind of statements are allowed)
+    - All exports must be named (no default exports) and have a source
+ - This ensures a bijective mapping between named exports and CommonJS submodules
+2. Set the package.json "main" field to `dist/index.js` and "module" field to `dist-es/index.js`
+3. Add `/*.js` to your gitignore, which ignores the generated files at your package root
+4. A CommonJS submodule entry will be created at the root for any named export
 
-With the exception of these restrictions on the contents of `src/index.js`, there's no other restrictions (e.g. file structure or naming) as the file structure of `dist/` prevents file name collisions. It's designed to work with [Rollup](https://github.com/rollup/rollup) so you can have also have a single bundled ES2015 module in `dist/` in addition to the CommonJS modules.
+#### Package structure:
 
-## Example
+* package.json - (`"main": "dist/index.js"` and `"module": "dist-es/index.js"`)
+* .gitignore - (`dist/`, `dist-es/`, `/*.js`)
+* .npmignore - (`src/`, `.*`)
+* src/
+  * index.js
+  * foo.js
+  * other/
+    * bar.js
 
-https://github.com/rtsao/polypackage/tree/master/packages/demo
+#### Resulting polypackage:
 
-**[Source](https://github.com/rtsao/polypackage/tree/master/packages/demo/src)**
-
-**Output:**
-- dist/
-  - package.json - *(`main` points to `lib/index.js` and `module` points to `es/index.js`)*
-  - foo.js
-  - bar.js
-  - hello.js
-  - external.js
-  - something-else.js
-  - lib/
-    - index.js
-    - foo.js
-    - bar.js
-  - es/
-    - index.js - *(Rolled up ES Module)*
+* **foo.js**
+* **bar.js**
+* *package.json*
+* *.gitignore*
+* *.npmignore*
+* **dist/**
+  * **index.js**
+  * **other/**
+    * **bar.js**
+* **dist-es/**
+  * **index.js** - *(Rolled up ES Module)*
+* *src/*
+  * *index.js*
+  * *foo.js*
+  * *other/*
+    * *bar.js*
 
 Now consumers of your package can do both:
 ```js
-import {foo, somethingElse} from 'my-package';
+import {foo, bar} from 'my-package';
 ```
+
+and
 
 ```js
 // Notice no `.default` is needed
 var foo = require('my-package/foo');
-var somethingElse = require('my-package/something-else');
+var bar = require('my-package/bar');
 ```

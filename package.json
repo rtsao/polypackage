@@ -2,16 +2,18 @@
   "name": "polypackage-monorepo",
   "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "Polypackage monorepo",
   "main": "index.js",
   "scripts": {
+    "test": "lerna run test",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean"
   },
   "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
   "devDependencies": {
     "babel-preset-es2015": "^6.14.0",
-    "lerna": "2.0.0-beta.26"
+    "lerna": "2.0.0-beta.30",
+    "tape": "^4.6.2"
   },
   "license": "MIT"
 }

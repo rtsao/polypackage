@@ -1,30 +1,26 @@
 const fs = require('fs');
 const path = require('path');
 const polypackage = require('polypackage-core');
-const mkdirp = require('mkdirp');
 
 module.exports = function() {
   return {
     visitor: {
       Program: function({node}, state) {
         const rootModule = state.opts.rootModule || 'src/index.js';
-        const destDir = state.opts.dest;
-
         if (state.file.opts.filename !== rootModule) {
-          // only concerned with root module
+          // ignore everything but polypackage entry
           return false;
         }
-        const modules = polypackage(node.body, {
-          dirname: 'lib',
+        const files = polypackage(node.body, {
+          dirname: state.opts.transpileDir,
           preserveCase: state.opts.preserveCase
         });
-        mkdirp.sync(destDir);
-        modules.forEach(file => {
-          const filepath = path.join(destDir, file.filename);
+        Object.keys(files).forEach(filename => {
+          const content = files[filename];
           if (!state.opts.silent) {
-            console.log('polypackage:', filepath);
+            console.log('polypackage:', filename);
           }
-          fs.writeFileSync(filepath, file.code, 'utf8');
+          fs.writeFileSync(filename, content, 'utf8');
         });
       }
     }

@@ -1,41 +1,39 @@
 const path = require('path');
-const isValidExport = require('./is-valid-export');
-const constructIndividualExports = require('./construct-individual-exports');
-const compileToCommonJSEntry = require('./compile-to-commonjs-entry');
+const parseMain = require('./parse-polypackage-entry');
+const generateCommonJsEntry = require('./generate-commonjs-entry');
+const stringify = require('./stringify-entry-ast');
 const kebab = require('param-case');
 
 module.exports = moduleAstToCommonJs;
 
-function moduleAstToCommonJs(body, opts) {
-  inspect(body);
-  const transFn = sourcePath => getTranspiledPath(sourcePath, opts.dirname);
-  const identifierToFilename = identifier =>
-    `${opts.preserveCase ? identifier : kebab(identifier)}.js`;
-
-  let output = [];
-  body.forEach(decl => {
-    const asts = constructIndividualExports(decl, transFn);
-    asts.forEach(thing => {
-      const code = compileToCommonJSEntry(thing.declaration);
-      const filename = identifierToFilename(thing.exportedIdentifier);
-      output.push({filename, code});
-    });
-  });
-  return output;
-}
-
-function inspect(body) {
-  for (let i = 0; i < body.length; i++) {
-    const item = body[i];
-    if (!isValidExport(item)) {
-      // TODO: output line number
-      throw Error('not a valid export');
+function moduleAstToCommonJs(body, opts = {}) {
+  const exported = parseMain(body);
+  // transformers
+  const files = Object.keys(exported).reduce((acc, exportedName) => {
+    const filename = getFilename(exportedName, opts.preserveCase);
+    if (acc[filename]) {
+      // TODO: Friendlier errors
+      throw Error('commonJS filenames must be unique');
     }
-  }
+    const {localName, source} = exported[exportedName];
+    const ast = generateCommonJsEntry({
+      source: getTranspiledPath(source, opts.transpileDir),
+      exportedName,
+      localName
+    });
+    acc[filename] = stringify(ast);
+    return acc;
+  }, {});
+  return files;
 }
 
-function getTranspiledPath(str, transpileDirname) {
-  return pathIsRelative(str) ? `./${path.join(transpileDirname, str)}` : str;
+function getFilename(identifier, preserveCase = false) {
+  const name = preserveCase ? identifier : kebab(identifier);
+  return `${name}.js`;
+}
+
+function getTranspiledPath(str, transpileDir = 'dist') {
+  return pathIsRelative(str) ? `./${path.join(transpileDir, str)}` : str;
 }
 
 /**

@@ -1,8 +1,4 @@
 {
   "presets": ["es2015"],
-  "plugins": [
-    ["polypackage", {
-      "dest": "dist"
-    }]
-  ]
+  "plugins": ["polypackage"]
 }
