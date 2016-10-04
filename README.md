@@ -1,5 +1,8 @@
 # polypackage
 
+[![build status][build-badge]][build-href]
+[![npm version][npm-badge]][npm-href]
+
 Use ES2015+ import/export syntax to publish a single npm package with:
 * Universal granular imports for consumers lacking a tree-shaking bundler
  * **Idiomatic CommonJS consumption**
@@ -68,3 +71,8 @@ and
 var foo = require('my-package/foo');
 var bar = require('my-package/bar');
 ```
+
+[build-badge]: https://travis-ci.org/rtsao/polypackage.svg?branch=master
+[build-href]: https://travis-ci.org/rtsao/polypackage
+[npm-badge]: https://badge.fury.io/js/polypackage-core.svg
+[npm-href]: https://www.npmjs.com/package/polypackage-core
