@@ -18,6 +18,43 @@ Use ES2015+ import/export syntax to publish a single npm package with:
 
 Polypackage is loosely based on the "poly-packages" idea proposed in https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md#poly-packages
 
+## What it looks like
+
+#### src/index.js
+```js
+export {default as foo} from './foo';
+export {bar, baz} from './other/submodule';
+```
+
+Now consumers of your package can do any of the following:
+
+#### CommonJS (idiomatic submodules)
+```js
+// No `.default` is needed!
+const foo = require('my-package/foo');
+const bar = require('my-package/bar');
+```
+
+#### CommonJS (entire module)
+```js
+// No `.default` is needed!
+const {foo, bar, baz} = require('my-package/foo');
+```
+
+#### ES Modules (idiomatic destructuring)
+```js
+// With a tree-shaking bundler, you can do this without a potential bundle size penalty
+// Additionally, because the bundler will resolve a Rolled-up ES module, there's even less module overhead!
+import {foo, bar} from 'my-package';
+```
+
+#### ES Modules (submodule import)
+```js
+// without a tree-shaking bundler, this might be preferred
+import foo from 'my-package/foo';
+import bar from 'my-package/bar';
+```
+
 ## How it works
 
 1. Create a polypackage "index" entry with ES2015 export syntax.
@@ -59,18 +96,7 @@ Polypackage is loosely based on the "poly-packages" idea proposed in https://git
   * *other/*
     * *bar.js*
 
-Now consumers of your package can do both:
-```js
-import {foo, bar} from 'my-package';
-```
 
-and
-
-```js
-// Notice no `.default` is needed
-var foo = require('my-package/foo');
-var bar = require('my-package/bar');
-```
 
 [build-badge]: https://travis-ci.org/rtsao/polypackage.svg?branch=master
 [build-href]: https://travis-ci.org/rtsao/polypackage
