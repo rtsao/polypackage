@@ -1,0 +1,28 @@
+{
+  "name": "polypackage-cli",
+  "version": "2.0.0-beta.1",
+  "description": "",
+  "bin": "bin/cli.js",
+  "scripts": {
+    "pretest": "npm run transpile",
+    "test": "node dist/test/index.js",
+    "transpile": "babel src -d dist",
+    "prepublish": "npm run transpile"
+  },
+  "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "6.x",
+    "minimist": "^1.2.0",
+    "read-pkg-up": "^2.0.0",
+    "rollup": "^0.36.3",
+    "rollup-plugin-babel": "^2.6.1"
+  },
+  "peerDependencies": {
+    "babel-cli": "6.x"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babylon": "^6.11.4"
+  }
+}
