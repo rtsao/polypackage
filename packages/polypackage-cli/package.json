@@ -3,12 +3,7 @@
   "version": "2.0.1-beta.0",
   "description": "",
   "bin": "bin/cli.js",
-  "scripts": {
-    "pretest": "npm run transpile",
-    "test": "node dist/test/index.js",
-    "transpile": "babel src -d dist",
-    "prepublish": "npm run transpile"
-  },
+  "scripts": {},
   "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -24,5 +19,8 @@
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babylon": "^6.11.4"
+  },
+  "engines": {
+    "node": ">=4"
   }
 }
