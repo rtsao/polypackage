@@ -1,6 +1,6 @@
 {
   "name": "polypackage-cli",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.1-beta.0",
   "description": "",
   "bin": "bin/cli.js",
   "scripts": {

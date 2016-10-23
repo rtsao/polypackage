@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-polypackage",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.1-beta.0",
   "description": "Babel plugin for polypackage",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "prepublish": "npm run transpile"
   },
   "dependencies": {
-    "polypackage-core": "^2.0.0-beta.1"
+    "polypackage-core": "^2.0.1-beta.0"
   },
   "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
   "license": "MIT",
